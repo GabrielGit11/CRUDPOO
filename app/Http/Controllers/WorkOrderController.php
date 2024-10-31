@@ -16,7 +16,7 @@ class WorkOrderController extends Controller
      */
     public function index(Request $request): View
     {
-        $workOrders = WorkOrder::paginate();
+        $workOrders = WorkOrder::with(['client', 'workGroup', 'status', 'vehicle'])->paginate();
 
         return view('work-order.index', compact('workOrders'))
             ->with('i', ($request->input('page', 1) - 1) * $workOrders->perPage());

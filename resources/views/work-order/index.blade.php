@@ -35,37 +35,33 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-									<th >Client Id</th>
-									<th >Work Group Id</th>
-									<th >Status Id</th>
-									<th >Vehicle Id</th>
-									<th >Description</th>
-									<th >Scheduled Date</th>
-									<th >Completed Date</th>
-									<th >Notes</th>
-									<th >Estimated Cost</th>
-									<th >Actual Cost</th>
-
+                                        <th>Cliente</th>
+                                        <th>Grupo de Trabajo</th>
+                                        <th>Estado</th>
+                                        <th>Vehículo</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha Programada</th>
+                                        <th>Fecha de Finalización</th>
+                                        <th>Notas</th>
+                                        <th>Costo Estimado</th>
+                                        <th>Costo Real</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($workOrders as $workOrder)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-										<td >{{ $workOrder->client_id }}</td>
-										<td >{{ $workOrder->work_group_id }}</td>
-										<td >{{ $workOrder->status_id }}</td>
-										<td >{{ $workOrder->vehicle_id }}</td>
-										<td >{{ $workOrder->description }}</td>
-										<td >{{ $workOrder->scheduled_date }}</td>
-										<td >{{ $workOrder->completed_date }}</td>
-										<td >{{ $workOrder->notes }}</td>
-										<td >{{ $workOrder->estimated_cost }}</td>
-										<td >{{ $workOrder->actual_cost }}</td>
-
+                                            <td>{{ $workOrder->id }}</td>
+                                            <td>{{ $workOrder->client->name }}</td>
+                                            <td>{{ $workOrder->workGroup->name }}</td>
+                                            <td>{{ $workOrder->status->name }}</td>
+                                            <td>{{ $workOrder->vehicle->name }}</td>
+                                            <td>{{ $workOrder->description }}</td>
+                                            <td>{{ $workOrder->scheduled_date }}</td>
+                                            <td>{{ $workOrder->completed_date }}</td>
+                                            <td>{{ $workOrder->notes }}</td>
+                                            <td>{{ $workOrder->estimated_cost }}</td>
+                                            <td>{{ $workOrder->actual_cost }}</td>
                                             <td>
                                                 <form action="{{ route('work-orders.destroy', $workOrder->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('work-orders.show', $workOrder->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
